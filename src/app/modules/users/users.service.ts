@@ -26,6 +26,10 @@ const createUser = async (user: IUser): Promise<IUser | null> => {
   return createdUser
 }
 
+const getUser = async (): Promise<IUser[]> => {
+  return await User.find({}, { _id: 0 })
+}
 export default {
   createUser,
+  getUser,
 }

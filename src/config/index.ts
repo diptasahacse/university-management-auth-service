@@ -1,6 +1,7 @@
 import dotenv from 'dotenv'
 import path from 'path'
 
+// process.cwd() => Current Directory
 dotenv.config({ path: path.join(process.cwd(), '.env') })
 
 export default {
