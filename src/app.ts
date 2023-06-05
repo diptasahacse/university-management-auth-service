@@ -20,7 +20,6 @@ app.use('/api/v1/users', UserRoutes)
 //   throw new ApiError(400, 'Ore Baba')
 //   // next('Ore Baba') // Error
 // })
-
 // Global Error Handler
 app.use(globalErrorHandler)
 
