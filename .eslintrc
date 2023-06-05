@@ -14,7 +14,7 @@
   ],
 
   "rules": {
-    "no-console": "error",
+    "no-console": "warn",
     "no-undefined": "error",
     "no-undef": "error",
     "no-unused-expressions": "error",
