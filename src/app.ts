@@ -1,7 +1,8 @@
 import express, { Application } from 'express'
-import userRouter from './app/modules/users/users.route'
+import { UserRoutes } from './app/modules/users/user.route'
 import cors from 'cors'
 import globalErrorHandler from './app/middlewares/globalErrorHandler'
+
 const app: Application = express()
 
 // Cors
@@ -12,11 +13,11 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 // Application routes
-app.use('/api/v1/users', userRouter)
+app.use('/api/v1/users', UserRoutes)
 
 // // Default Route
 // app.get('/', (req: Request, res: Response, next: NextFunction) => {
-//   throw new Error('Ore Baba')
+//   throw new ApiError(400, 'Ore Baba')
 //   // next('Ore Baba') // Error
 // })
 
