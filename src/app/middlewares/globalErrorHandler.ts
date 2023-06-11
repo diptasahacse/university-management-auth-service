@@ -33,7 +33,6 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
         ]
       : []
   } else if (error instanceof Error) {
-    console.log('This is Normal Error')
     message = error.message
     errorMessages = error?.message
       ? [
