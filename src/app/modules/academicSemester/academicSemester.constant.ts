@@ -1,4 +1,10 @@
-const month = [
+import {
+  AcademicSemesterCodes,
+  AcademicSemesterTitles,
+  AcademicSemesterMonths,
+} from './academicSemester.interface';
+
+export const academicSemesterMonths: AcademicSemesterMonths[] = [
   'January',
   'February',
   'March',
@@ -12,7 +18,13 @@ const month = [
   'November',
   'December',
 ];
-
-export const AcademicSemesterConstant = {
-  month,
-};
+export const academicSemesterTitles: AcademicSemesterTitles[] = [
+  'Autumn',
+  'Summer',
+  'Fall',
+];
+export const academicSemesterCodes: AcademicSemesterCodes[] = [
+  '01',
+  '02',
+  '03',
+];
