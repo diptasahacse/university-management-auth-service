@@ -119,6 +119,16 @@
             "date": 1686586283226,
             "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-12-06-22-error.log",
             "hash": "ca2fe5ab6210380f8a90fd23923d2366e4a8d9b25f7313c5b89ed0e50dc9e868"
+        },
+        {
+            "date": 1686590974081,
+            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-12-06-23-error.log",
+            "hash": "51e7aa534d17272cd05a1b55775c0b84b9d65c979117f8d395f194da1992ced3"
+        },
+        {
+            "date": 1686592860430,
+            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-13-06-00-error.log",
+            "hash": "e8c13fb71e96171fd4699a1552efccc7b8f1b8441e7ab5073eb60e765b1a57d7"
         }
     ],
     "hashType": "sha256"
