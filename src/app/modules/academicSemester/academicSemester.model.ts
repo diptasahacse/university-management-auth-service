@@ -1,5 +1,5 @@
 import { Schema, model } from 'mongoose';
-import status from 'http-status';
+import httpStatus from 'http-status';
 import {
   AcademicSemesterModel,
   IAcademicSemester,
@@ -54,7 +54,7 @@ academicSemesterSchema.pre('save', async function (next) {
   });
   if (isExist) {
     throw new ApiError(
-      status.CONFLICT,
+      httpStatus.CONFLICT,
       'Academy semester type and year are already exists!'
     );
   }
