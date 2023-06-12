@@ -134,6 +134,11 @@
             "date": 1686596591810,
             "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\successes\\ums-2023-13-06-01-success.log",
             "hash": "64e15535651719d15f57141c08254cc46c1cabf7e789959f50f66541e87988af"
+        },
+        {
+            "date": 1686600125186,
+            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\successes\\ums-2023-13-06-02-success.log",
+            "hash": "8546d31fc4ad7a8d26f5fc2a52986e33305e9c428a56540a3499cf0ec8c5bcfa"
         }
     ],
     "hashType": "sha256"
