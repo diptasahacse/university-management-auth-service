@@ -3,6 +3,10 @@ import ApiError from '../../../errors/ApiError';
 import { academicSemesterTitleCodeMapper } from './academicSemester.constant';
 import { IAcademicSemester } from './academicSemester.interface';
 import { AcademicSemester } from './academicSemester.model';
+import { IPaginationOptions } from '../../../interfaces/pagination';
+import { IGenericResponse } from '../../../interfaces/common';
+import { paginationHelper } from '../../../helper/paginationHelper';
+import { SortOrder } from 'mongoose';
 
 const createAcademicSemester = async (
   academicSemester: IAcademicSemester
@@ -28,6 +32,34 @@ const createAcademicSemester = async (
   return createAcademicSemester;
 };
 
+const getAllAcademicSemesters = async (
+  paginationOptions: IPaginationOptions
+): Promise<IGenericResponse<IAcademicSemester[]>> => {
+  const { page, limit, skip, sortBy, sortOrder } =
+    paginationHelper.calculatePagination(paginationOptions);
+
+  const sortConditions: { [key: string]: SortOrder } = {};
+
+  if (sortBy && sortOrder) {
+    sortConditions[sortBy] = sortOrder;
+  }
+
+  const result = await AcademicSemester.find()
+    .sort(sortConditions)
+    .skip(skip)
+    .limit(limit);
+  const total = await AcademicSemester.countDocuments();
+  return {
+    meta: {
+      page,
+      limit,
+      total,
+    },
+    data: result,
+  };
+};
+
 export const AcademicSemesterService = {
   createAcademicSemester,
+  getAllAcademicSemesters,
 };
