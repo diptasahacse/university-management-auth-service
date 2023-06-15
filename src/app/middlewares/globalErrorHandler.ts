@@ -9,6 +9,7 @@ import { errorLogger } from '../../shared/logger';
 import { ZodError } from 'zod';
 import handleZodError from '../../errors/handleZodError';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
   config.env === 'development'
     ? console.log('⛔ Global Error Handler : ', error)
@@ -52,7 +53,6 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
         ]
       : [];
   }
-
   res.status(statusCode).json({
     success: false,
     message,
@@ -60,8 +60,6 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
     // eslint-disable-next-line no-undefined
     stack: config.env !== 'production' ? error?.stack : undefined,
   });
-
-  next();
 };
 
 export default globalErrorHandler;
