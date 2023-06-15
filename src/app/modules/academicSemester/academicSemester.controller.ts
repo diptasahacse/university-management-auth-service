@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from 'express';
+import { Request, Response } from 'express';
 import { AcademicSemesterService } from './academicSemester.service';
 import catchAsync from '../../../shared/catchAsync';
 import sendResponse from '../../../shared/sendResponse';
@@ -11,7 +11,7 @@ import {
 } from './academicSemester.interface';
 
 const createAcademicSemester = catchAsync(
-  async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  async (req: Request, res: Response): Promise<void> => {
     const { academicSemester } = req.body;
     const result = await AcademicSemesterService.createAcademicSemester(
       academicSemester
@@ -23,12 +23,11 @@ const createAcademicSemester = catchAsync(
       message: 'Successfully create academic semester',
       data: result,
     });
-    next();
   }
 );
 
 const getAllAcademicSemesters = catchAsync(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response) => {
     const filters: IAcademicSemesterFilters = pick(req.query, ['searchTerm']);
 
     const paginationOptions = pick(req.query, paginationFields);
@@ -44,7 +43,6 @@ const getAllAcademicSemesters = catchAsync(
       data: result.data,
       meta: result.meta,
     });
-    next();
   }
 );
 export const AcademicSemesterController = {
