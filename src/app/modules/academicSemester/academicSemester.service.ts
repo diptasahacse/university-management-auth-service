@@ -39,7 +39,7 @@ const getAllAcademicSemesters = async (
   filters: IAcademicSemesterFilters,
   paginationOptions: IPaginationOptions
 ): Promise<IGenericResponse<IAcademicSemester[]>> => {
-  const { searchTerm } = filters;
+  const { searchTerm, ...filtersData } = filters;
 
   const academicSemesterSearchableFields = [
     'title',
@@ -58,13 +58,23 @@ const getAllAcademicSemesters = async (
         },
       })),
     });
-  } else {
+  }
+
+  if (Object.keys(filtersData).length) {
+    andConditions.push({
+      $and: Object.entries(filtersData).map(item => ({
+        [item[0]]: item[1],
+      })),
+    });
+  }
+
+  if (!Object.keys(filtersData).length && !searchTerm) {
     andConditions.push({});
   }
 
   const { page, limit, skip, sortBy, sortOrder } =
     paginationHelper.calculatePagination(paginationOptions);
-
+  // console.log(filtersData);
   const sortConditions: { [key: string]: SortOrder } = {};
 
   if (sortBy && sortOrder) {
