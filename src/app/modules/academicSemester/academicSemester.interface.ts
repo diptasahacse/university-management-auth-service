@@ -16,7 +16,7 @@ export type AcademicSemesterMonths =
   | 'December';
 export type IAcademicSemester = {
   title: AcademicSemesterTitles;
-  year: number;
+  year: string;
   code: AcademicSemesterCodes;
   startMonth: AcademicSemesterMonths;
   endMonth: AcademicSemesterMonths;
