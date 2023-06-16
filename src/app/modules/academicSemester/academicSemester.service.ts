@@ -62,8 +62,8 @@ const getAllAcademicSemesters = async (
 
   if (Object.keys(filtersData).length) {
     andConditions.push({
-      $and: Object.entries(filtersData).map(item => ({
-        [item[0]]: item[1],
+      $and: Object.entries(filtersData).map(([field, value]) => ({
+        [field]: value,
       })),
     });
   }
