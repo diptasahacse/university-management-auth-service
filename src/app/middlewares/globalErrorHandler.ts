@@ -48,6 +48,8 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
     statusCode = simplifiedError.statusCode;
     message = simplifiedError.message;
     errorMessages = simplifiedError.errorMessages;
+  } else if (error.name === 'MongoServerError') {
+    statusCode = 409;
   } else if (error instanceof Error) {
     message = error.message;
     errorMessages = error?.message

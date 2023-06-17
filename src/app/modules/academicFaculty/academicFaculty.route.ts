@@ -5,16 +5,25 @@ import { AcademicFacultyController } from './academicFaculty.controller';
 
 const router = Router();
 
+// Create
 router.post(
   '/create-academic-faculty',
   validateRequest(AcademicFacultyValidation.createAcademicFacultyZodSchema),
   AcademicFacultyController.createAcademicFaculty
 );
+// Get Single
 router.get(
   '/:id',
 
   AcademicFacultyController.getSingleAcademicFaculty
 );
+// Delete
+router.patch(
+  '/:id',
+  validateRequest(AcademicFacultyValidation.updateAcademicFacultyZodSchema),
+  AcademicFacultyController.updateAcademicFaculty
+);
+// Delete
 router.delete(
   '/:id',
 
