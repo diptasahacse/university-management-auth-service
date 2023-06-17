@@ -115,9 +115,20 @@ const updateSemester = async (
   });
   return result;
 };
+const deleteSemester = async (id: string) => {
+  const ifExist = await AcademicSemester.findById(id);
+
+  if (!ifExist) {
+    throw new ApiError(500, `${id} id does not exist`);
+  }
+
+  const result = await AcademicSemester.findOneAndDelete({ _id: id });
+  return result;
+};
 export const AcademicSemesterService = {
   createAcademicSemester,
   getAllAcademicSemesters,
   getSingleAcademicSemester,
   updateSemester,
+  deleteSemester,
 };

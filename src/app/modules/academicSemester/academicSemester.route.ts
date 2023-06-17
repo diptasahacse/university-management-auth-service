@@ -20,6 +20,8 @@ router.patch(
   validateRequest(AcademicSemesterValidation.updateAcademicSemesterZodSchema),
   AcademicSemesterController.updateSemester
 );
+// Delete semester
+router.delete('/:id', AcademicSemesterController.deleteSemester);
 
 // Get all semester
 router.get('/', AcademicSemesterController.getAllAcademicSemesters);
