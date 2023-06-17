@@ -119,7 +119,7 @@ const deleteSemester = async (id: string) => {
   const ifExist = await AcademicSemester.findById(id);
 
   if (!ifExist) {
-    throw new ApiError(500, `${id} id does not exist`);
+    throw new ApiError(httpStatus.NOT_FOUND, `${id} id does not exist`);
   }
 
   const result = await AcademicSemester.findOneAndDelete({ _id: id });
