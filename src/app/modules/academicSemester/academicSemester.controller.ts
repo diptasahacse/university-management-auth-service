@@ -73,7 +73,7 @@ const updateSemester = catchAsync(
     sendResponse<IAcademicSemester>(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Single Semester Retrieved Successfully',
+      message: 'Update Semester Successfully',
       data: result,
     });
   }
