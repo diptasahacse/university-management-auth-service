@@ -9,6 +9,7 @@ import {
   IAcademicSemester,
   IAcademicSemesterFilters,
 } from './academicSemester.interface';
+import { academicSemesterFilterableFields } from './academicSemester.constant';
 
 const createAcademicSemester = catchAsync(
   async (req: Request, res: Response): Promise<void> => {
@@ -28,12 +29,10 @@ const createAcademicSemester = catchAsync(
 
 const getAllAcademicSemesters = catchAsync(
   async (req: Request, res: Response) => {
-    const filters: IAcademicSemesterFilters = pick(req.query, [
-      'searchTerm',
-      'title',
-      'code',
-      'year',
-    ]);
+    const filters: IAcademicSemesterFilters = pick(
+      req.query,
+      academicSemesterFilterableFields
+    );
 
     const paginationOptions = pick(req.query, paginationFields);
     const result = await AcademicSemesterService.getAllAcademicSemesters(
@@ -49,7 +48,23 @@ const getAllAcademicSemesters = catchAsync(
     });
   }
 );
+
+const getSingleAcademicSemester = catchAsync(
+  async (req: Request, res: Response): Promise<void> => {
+    const { id } = req.params;
+    const result = await AcademicSemesterService.getSingleAcademicSemester(id);
+
+    sendResponse<IAcademicSemester>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Single Semester Retrieved Successfully',
+      data: result,
+    });
+  }
+);
+
 export const AcademicSemesterController = {
   createAcademicSemester,
   getAllAcademicSemesters,
+  getSingleAcademicSemester,
 };
