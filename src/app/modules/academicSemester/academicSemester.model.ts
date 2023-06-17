@@ -19,7 +19,7 @@ const academicSemesterSchema = new Schema<IAcademicSemester>(
       enum: academicSemesterTitles,
     },
     year: {
-      type: Number,
+      type: String,
       required: true,
     },
     code: {
@@ -46,6 +46,16 @@ const academicSemesterSchema = new Schema<IAcademicSemester>(
 // Post Hook => When apply hook after save
 // Handling Same Year and Same Semester issues using pre hook.
 // Always use before model
+
+academicSemesterSchema.pre('save', async function (next) {
+  if (Number(this.year) < 2000) {
+    throw new ApiError(
+      httpStatus.CONFLICT,
+      'Year must be greater than or equal to 2000'
+    );
+  }
+  next();
+});
 
 academicSemesterSchema.pre('save', async function (next) {
   const isExist = await AcademicSemester.findOne({
