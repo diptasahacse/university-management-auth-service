@@ -97,8 +97,38 @@ const getSingleAcademicSemester = async (
   const result = await AcademicSemester.findById(id);
   return result;
 };
+
+const updateSemester = async (
+  id: string,
+  payload: Partial<IAcademicSemester>
+) => {
+  // Here, I have to match title with code
+  if (
+    payload.title &&
+    payload.code &&
+    academicSemesterTitleCodeMapper[payload.title] !== payload.code
+  ) {
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Invalid Semester code');
+  }
+  const result = await AcademicSemester.findOneAndUpdate({ _id: id }, payload, {
+    new: true,
+  });
+  return result;
+};
+const deleteSemester = async (id: string) => {
+  const ifExist = await AcademicSemester.findById(id);
+
+  if (!ifExist) {
+    throw new ApiError(500, `${id} id does not exist`);
+  }
+
+  const result = await AcademicSemester.findOneAndDelete({ _id: id });
+  return result;
+};
 export const AcademicSemesterService = {
   createAcademicSemester,
   getAllAcademicSemesters,
   getSingleAcademicSemester,
+  updateSemester,
+  deleteSemester,
 };

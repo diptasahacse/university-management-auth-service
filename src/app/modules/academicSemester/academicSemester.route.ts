@@ -10,8 +10,19 @@ router.post(
   validateRequest(AcademicSemesterValidation.createAcademicSemesterZodSchema),
   AcademicSemesterController.createAcademicSemester
 );
+
 // Get single semester
 router.get('/:id', AcademicSemesterController.getSingleAcademicSemester);
+
+// Update Semester
+router.patch(
+  '/:id',
+  validateRequest(AcademicSemesterValidation.updateAcademicSemesterZodSchema),
+  AcademicSemesterController.updateSemester
+);
+// Delete semester
+router.delete('/:id', AcademicSemesterController.deleteSemester);
+
 // Get all semester
 router.get('/', AcademicSemesterController.getAllAcademicSemesters);
 
