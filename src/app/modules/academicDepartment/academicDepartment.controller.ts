@@ -49,7 +49,60 @@ const getAllAcademicDepartment = catchAsync(
     });
   }
 );
+
+const getSingleAcademicDepartment = catchAsync(
+  async (req: Request, res: Response): Promise<void> => {
+    const { id } = req.params;
+
+    const result = await AcademicDepartmentService.getSingleAcademicDepartment(
+      id
+    );
+
+    sendResponse<IAcademicDepartment>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Single academic department retrieved successfully',
+      data: result,
+    });
+  }
+);
+
+const updateAcademicDepartment = catchAsync(
+  async (req: Request, res: Response): Promise<void> => {
+    const { id } = req.params;
+    const updatedData = req.body;
+    const result = await AcademicDepartmentService.updateAcademicDepartment(
+      id,
+      updatedData
+    );
+
+    sendResponse<IAcademicDepartment>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Update academic department successfully',
+      data: result,
+    });
+  }
+);
+const deleteAcademicDepartment = catchAsync(
+  async (req: Request, res: Response): Promise<void> => {
+    const { id } = req.params;
+
+    const result = await AcademicDepartmentService.deleteAcademicDepartment(id);
+
+    sendResponse<IAcademicDepartment>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'delete academic department successfully',
+      data: result,
+    });
+  }
+);
+
 export const AcademicDepartmentController = {
   createAcademicDepartment,
   getAllAcademicDepartment,
+  getSingleAcademicDepartment,
+  updateAcademicDepartment,
+  deleteAcademicDepartment,
 };
