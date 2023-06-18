@@ -1,8 +1,10 @@
 import httpStatus from 'http-status';
 import ApiError from '../../../errors/ApiError';
-import { IAcademicDepartment } from './academicDepartment.interface';
+import {
+  IAcademicDepartment,
+  IAcademicDepartmentFilters,
+} from './academicDepartment.interface';
 import { AcademicDepartment } from './academicDepartment.model';
-import { IAcademicFacultyFilters } from '../academicFaculty/academicFaculty.interface';
 import { IPaginationOptions } from '../../../interfaces/pagination';
 import { IGenericResponse } from '../../../interfaces/common';
 import { academicDepartmentSearchableFields } from './academicDepartment.constant';
@@ -26,11 +28,13 @@ const createAcademicDepartment = async (
 };
 
 const getAllAcademicDepartment = async (
-  filters: IAcademicFacultyFilters,
+  filters: IAcademicDepartmentFilters,
   paginationOptions: IPaginationOptions
 ): Promise<IGenericResponse<IAcademicDepartment[]>> => {
-  const { searchTerm, ...filtersData } = filters;
+  const { page, limit, skip, sortBy, sortOrder } =
+    paginationHelper.calculatePagination(paginationOptions);
 
+  const { searchTerm, ...filtersData } = filters;
   const andConditions = [];
   if (searchTerm) {
     andConditions.push({
@@ -50,8 +54,6 @@ const getAllAcademicDepartment = async (
       })),
     });
   }
-  const { page, limit, skip, sortBy, sortOrder } =
-    paginationHelper.calculatePagination(paginationOptions);
 
   const sortConditions: { [key: string]: SortOrder } = {};
 
@@ -60,6 +62,8 @@ const getAllAcademicDepartment = async (
   }
   const whereConditions =
     andConditions.length > 0 ? { $and: andConditions } : {};
+  console.log(whereConditions);
+
   const result = await AcademicDepartment.find(whereConditions)
     .populate('academicFaculty')
     .sort(sortConditions)
@@ -75,7 +79,48 @@ const getAllAcademicDepartment = async (
     data: result,
   };
 };
+
+const getSingleAcademicDepartment = async (
+  id: string
+): Promise<IAcademicDepartment | null> => {
+  const result = await AcademicDepartment.findById(id);
+  return result;
+};
+
+const updateAcademicDepartment = async (
+  id: string,
+  payload: IAcademicDepartment
+) => {
+  const ifExist = await AcademicDepartment.findById(id);
+  if (!ifExist) {
+    throw new ApiError(httpStatus.NOT_FOUND, `${id} id does not exist`);
+  }
+
+  const result = (
+    await AcademicDepartment.findByIdAndUpdate({ _id: id }, payload, {
+      new: true,
+    })
+  )?.populate('academicFaculty');
+  return result;
+};
+
+const deleteAcademicDepartment = async (
+  id: string
+): Promise<IAcademicDepartment | null> => {
+  const ifExist = await AcademicDepartment.findById(id);
+
+  if (!ifExist) {
+    throw new ApiError(httpStatus.NOT_FOUND, `${id} id does not exist`);
+  }
+
+  const result = await AcademicDepartment.findOneAndDelete({ _id: id });
+  return result;
+};
+
 export const AcademicDepartmentService = {
   createAcademicDepartment,
   getAllAcademicDepartment,
+  getSingleAcademicDepartment,
+  updateAcademicDepartment,
+  deleteAcademicDepartment,
 };
