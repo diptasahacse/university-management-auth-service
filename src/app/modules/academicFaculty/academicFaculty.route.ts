@@ -17,12 +17,14 @@ router.get(
 
   AcademicFacultyController.getSingleAcademicFaculty
 );
-// Delete
+// Update
 router.patch(
   '/:id',
   validateRequest(AcademicFacultyValidation.updateAcademicFacultyZodSchema),
   AcademicFacultyController.updateAcademicFaculty
 );
+// Get All
+router.get('/', AcademicFacultyController.getAllAcademicFaculty);
 // Delete
 router.delete(
   '/:id',

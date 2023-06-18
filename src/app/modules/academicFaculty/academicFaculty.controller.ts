@@ -2,9 +2,14 @@ import { Request, Response } from 'express';
 import catchAsync from '../../../shared/catchAsync';
 import { AcademicFacultyService } from './academicFaculty.service';
 import sendResponse from '../../../shared/sendResponse';
-import { IAcademicFaculty } from './academicFaculty.interface';
+import {
+  IAcademicFaculty,
+  IAcademicFacultyFilters,
+} from './academicFaculty.interface';
 import httpStatus from 'http-status';
-
+import pick from '../../../shared/pick';
+import { academicFacultyFilterableFields } from './academicFaculty.constant';
+import { paginationFields } from '../../../constants/pagination';
 const createAcademicFaculty = catchAsync(
   async (req: Request, res: Response): Promise<void> => {
     const { academicFaculty } = req.body;
@@ -22,6 +27,28 @@ const createAcademicFaculty = catchAsync(
   }
 );
 
+const getAllAcademicFaculty = catchAsync(
+  async (req: Request, res: Response) => {
+    const filters: IAcademicFacultyFilters = pick(
+      req.query,
+      academicFacultyFilterableFields
+    );
+
+    const paginationOptions = pick(req.query, paginationFields);
+    const result = await AcademicFacultyService.getAllAcademicFaculty(
+      filters,
+      paginationOptions
+    );
+
+    sendResponse<IAcademicFaculty[]>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Faculty Retrieved Successfully',
+      data: result.data,
+      meta: result.meta,
+    });
+  }
+);
 const getSingleAcademicFaculty = catchAsync(
   async (req: Request, res: Response): Promise<void> => {
     const { id } = req.params;
@@ -73,4 +100,5 @@ export const AcademicFacultyController = {
   getSingleAcademicFaculty,
   deleteAcademicFaculty,
   updateAcademicFaculty,
+  getAllAcademicFaculty,
 };
