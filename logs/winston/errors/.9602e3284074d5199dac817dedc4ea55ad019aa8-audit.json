@@ -6,61 +6,6 @@
     "auditLog": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\.9602e3284074d5199dac817dedc4ea55ad019aa8-audit.json",
     "files": [
         {
-            "date": 1685898510035,
-            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-04-06-23-error.log",
-            "hash": "ccd74947452f32d532671670968e6823de50c1cf048c3d1c0ce886b01717542c"
-        },
-        {
-            "date": 1685901796879,
-            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-05-06-00-error.log",
-            "hash": "dc26eed6d0985c24f8ea607d60b9a546f6dac4932beca32627bb48d1ef1a0196"
-        },
-        {
-            "date": 1685910782569,
-            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-05-06-02-error.log",
-            "hash": "84c2a1d5fed14a4193530e73eb085139372fb0e0288982dee181750bb3404a19"
-        },
-        {
-            "date": 1685986722249,
-            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-05-06-23-error.log",
-            "hash": "7bc0c729822e777f6ec25354aa1427859d248a206566f5643eef2a3835208a64"
-        },
-        {
-            "date": 1685988212109,
-            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-06-06-00-error.log",
-            "hash": "90295552ad3d73f57514dfde1803fc642ad79f394a5fbd28420be80bcb39d9e8"
-        },
-        {
-            "date": 1685992110257,
-            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-06-06-01-error.log",
-            "hash": "de7ed97eb7fd19d1e03a7330d250f790a8b74bbe92b8d20b9a8681acaea7065f"
-        },
-        {
-            "date": 1685995266131,
-            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-06-06-02-error.log",
-            "hash": "021bb901b6416ca97679eefcede0f9cc3fd19cbcab39203ee5ed335ffb5e232d"
-        },
-        {
-            "date": 1686150368737,
-            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-07-06-21-error.log",
-            "hash": "d7346f362bceb1ba8002e78acddc0f22485b2d9bc0a514fc05aeda333da917c2"
-        },
-        {
-            "date": 1686160258069,
-            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-07-06-23-error.log",
-            "hash": "6827b74d28653ff58b02db333176e2f8280458fb2d865f242871b9a7483c33fd"
-        },
-        {
-            "date": 1686160932572,
-            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-08-06-00-error.log",
-            "hash": "683f97009fae845f947e030c1e609c1ad98a3213d697309b28f79a547c8b53bd"
-        },
-        {
-            "date": 1686164423366,
-            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-08-06-01-error.log",
-            "hash": "e2bbc9dd09d1d21e38e0c0b57ea92b2adde103503c5f86346c4f6cd33f128d11"
-        },
-        {
             "date": 1686242315740,
             "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-08-06-22-error.log",
             "hash": "db2ad6babbce7e888d4c6633437c55110ed01336f2e82a261cdb8d61fe4f4bf0"
@@ -319,6 +264,86 @@
             "date": 1687107997903,
             "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-18-06-23-error.log",
             "hash": "2e92702cb249b905c242570fd1d7b185bc49710d6d7af29360636d1798c61c7f"
+        },
+        {
+            "date": 1687113373439,
+            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-19-06-00-error.log",
+            "hash": "aa39153f273da0a8e360b816c350d8d5181768d80881dbbdbf42812c3cc1fc14"
+        },
+        {
+            "date": 1687115101478,
+            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-19-06-01-error.log",
+            "hash": "629796ebc7d35ca1f26c3c4d6e8cb267724a37d1a14919dba56dcaa24f2c0907"
+        },
+        {
+            "date": 1687119400448,
+            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-19-06-02-error.log",
+            "hash": "a944f62654c7e51f6955278bf20e6476e0599c4a84fcd6c04319d86735575c0f"
+        },
+        {
+            "date": 1687122176995,
+            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-19-06-03-error.log",
+            "hash": "977177c0bfa9c606815bdd60f35f2e584ec62b621b374e1f3e24843ed31ce395"
+        },
+        {
+            "date": 1687185993923,
+            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-19-06-20-error.log",
+            "hash": "0fffb139a683f16009af265962d003101ebb10fd11f30931238a02d5395263a6"
+        },
+        {
+            "date": 1687186931235,
+            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-19-06-21-error.log",
+            "hash": "164f280da61dc02edfc70a800ecb20f41d2ad9fa137c9393c5b372fde1238371"
+        },
+        {
+            "date": 1687197287938,
+            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-19-06-23-error.log",
+            "hash": "d49e7ad3c5bd588e9e9b2bf3c0d412297656120d1a2b01c7ef71c3d78ca857c2"
+        },
+        {
+            "date": 1687200780218,
+            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-20-06-00-error.log",
+            "hash": "0a19310133beaa18057161874e501654207baa2cb8775f6bed904118daaf6c87"
+        },
+        {
+            "date": 1687201454066,
+            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-20-06-01-error.log",
+            "hash": "a05140bf893ed064e155408e3d84f4a75ea5301a9d72f5dc44a39056a299bc45"
+        },
+        {
+            "date": 1687204816211,
+            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-20-06-02-error.log",
+            "hash": "be3fc73101add1621f4a0a0d7def3ef7681600407de2fec63ce7b33cab7880e5"
+        },
+        {
+            "date": 1687285137374,
+            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-21-06-00-error.log",
+            "hash": "a5229338b99388a9c7dd0f2dffbffbcd3b562fe054dd27aa6988564f1a04ce86"
+        },
+        {
+            "date": 1687287742553,
+            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-21-06-01-error.log",
+            "hash": "0c80724ece75ce5467d47d87571dc7fe46a63912361c7ea5633609a5a94b3801"
+        },
+        {
+            "date": 1687293673313,
+            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-21-06-02-error.log",
+            "hash": "a19a4637518b2371c74de049092ed70aeaf6bc182f95b473d39d7cc7199308ed"
+        },
+        {
+            "date": 1687360154177,
+            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-21-06-21-error.log",
+            "hash": "4445b05ab88f9d86e34bc6e542d5a81cb05e2719b1fbe8b03164ba0cd3c7a208"
+        },
+        {
+            "date": 1687445385702,
+            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-22-06-20-error.log",
+            "hash": "04a9c93ea83682e638537b80d845198da2f8762c7266901b2894cc6258c5e3a3"
+        },
+        {
+            "date": 1687447522574,
+            "name": "D:\\Mission 2023\\Programming Hero\\NEXT LEVEL MISSION\\University Management System Project\\university-management-system-auth\\logs\\winston\\errors\\ums-2023-22-06-21-error.log",
+            "hash": "d05a78c8e43579dfdccea86d8fdf6772357a933c8089ced3ac47e873297873b6"
         }
     ],
     "hashType": "sha256"
