@@ -104,8 +104,17 @@ const createStudentZodSchema = z.object({
   }),
 });
 
+// Faculty zod schema
+const createFacultyZodSchema = z.object({
+  body: z.object({
+    faculty: z.object({}),
+    password: z.string().optional(),
+  }),
+});
+
 export const UserValidation = {
   createStudentZodSchema,
+  createFacultyZodSchema,
 };
 
 // id: {

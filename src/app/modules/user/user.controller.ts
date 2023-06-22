@@ -17,6 +17,21 @@ const createStudent = catchAsync(
     });
   }
 );
+const createFaculty = catchAsync(
+  async (req: Request, res: Response): Promise<void> => {
+    const { faculty, ...user } = req.body;
+
+    const result = await UserService.createFaculty(faculty, user);
+
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Successfully create faculty',
+      data: result,
+    });
+  }
+);
+
 const getUser = async (req: Request, res: Response): Promise<void> => {
   try {
     const result = await UserService.getUser();
@@ -32,4 +47,4 @@ const getUser = async (req: Request, res: Response): Promise<void> => {
     });
   }
 };
-export const UserController = { createStudent, getUser };
+export const UserController = { createStudent, createFaculty, getUser };
