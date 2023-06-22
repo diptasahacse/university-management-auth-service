@@ -103,6 +103,7 @@ const createStudentZodSchema = z.object({
     password: z.string().optional(),
   }),
 });
+
 export const UserValidation = {
   createStudentZodSchema,
 };

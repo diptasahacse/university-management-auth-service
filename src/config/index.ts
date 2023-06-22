@@ -9,7 +9,7 @@ export default {
   port: process.env.PORT,
   database_uri:
     process.env.NODE_ENV == 'development'
-      ? process.env.LOCAL_DATABASE_URI
+      ? process.env.DATABASE_URI
       : process.env.DATABASE_URI,
   default_student_password: process.env.DEFAULT_STUDENT_PASS,
 };
