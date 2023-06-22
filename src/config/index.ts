@@ -11,5 +11,5 @@ export default {
     process.env.NODE_ENV == 'development'
       ? process.env.LOCAL_DATABASE_URI
       : process.env.DATABASE_URI,
-  default_user_password: process.env.DEFAULT_USER_PASS,
+  default_student_password: process.env.DEFAULT_STUDENT_PASS,
 };
