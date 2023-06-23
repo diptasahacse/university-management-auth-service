@@ -46,10 +46,13 @@ const getAllStudent = async (
     andConditions.length > 0 ? { $and: andConditions } : {};
 
   const result = await Student.find(whereConditions)
+    .populate('academicSemester')
+    .populate('academicDepartment')
+    .populate('academicFaculty')
     .sort(sortConditions)
     .skip(skip)
     .limit(limit);
-  const total = await Student.countDocuments();
+  const total = await Student.countDocuments(whereConditions);
   return {
     meta: {
       page,
@@ -61,7 +64,10 @@ const getAllStudent = async (
 };
 
 const getSingleStudent = async (id: string): Promise<IStudent | null> => {
-  const result = await Student.findById(id);
+  const result = await Student.findById(id)
+    .populate('academicSemester')
+    .populate('academicDepartment')
+    .populate('academicFaculty');
   return result;
 };
 
