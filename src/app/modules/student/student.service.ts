@@ -84,7 +84,10 @@ const deleteStudent = async (id: string) => {
     throw new ApiError(httpStatus.NOT_FOUND, `${id} id does not exist`);
   }
 
-  const result = await Student.findOneAndDelete({ _id: id });
+  const result = await Student.findOneAndDelete({ _id: id })
+    .populate('academicSemester')
+    .populate('academicDepartment')
+    .populate('academicFaculty');
   return result;
 };
 export const StudentService = {
