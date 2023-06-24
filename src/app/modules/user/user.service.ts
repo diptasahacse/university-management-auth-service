@@ -6,10 +6,12 @@ import { AcademicSemester } from '../academicSemester/academicSemester.model';
 import { IStudent } from '../student/student.interface';
 import { IUser } from './user.interface';
 import { User } from './user.model';
-import { generateStudentId } from './user.utils';
+import { generateFacultyId, generateStudentId } from './user.utils';
 import { Student } from '../student/student.model';
 import httpStatus from 'http-status';
 import { IAcademicSemester } from '../academicSemester/academicSemester.interface';
+import { IFaculty } from '../faculty/faculty.interface';
+import { Faculty } from '../faculty/faculty.model';
 // import { generateStudentId } from './user.utils';
 
 // const createStudent = async (
@@ -163,41 +165,37 @@ const createStudent = async (
 
 // Need modify
 const createFaculty = async (
-  student: IStudent,
+  faculty: IFaculty,
   user: IUser
 ): Promise<IUser | null> => {
   // default password
   if (!user.password) {
-    user.password = config.default_student_password as string;
+    user.password = config.default_faculty_password as string;
   }
 
   // set role
   user.role = 'faculty';
 
-  const academicSemester = await AcademicSemester.findById(
-    student.academicSemester
-  ).lean();
-
-  // generate student id
+  // generate faculty id
   let newUserAllData = null;
   const session = await mongoose.startSession();
   try {
     session.startTransaction();
 
-    const id = await generateStudentId(academicSemester as IAcademicSemester);
+    const id = await generateFacultyId();
 
     user.id = id;
-    student.id = id;
+    faculty.id = id;
 
     //array
-    const newStudent = await Student.create([student], { session });
+    const newFaculty = await Faculty.create([faculty], { session });
 
-    if (!newStudent.length) {
-      throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to create student');
+    if (!newFaculty.length) {
+      throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to create faculty');
     }
 
-    //set student -->  _id into user.student
-    user.student = newStudent[0]._id;
+    //set faculty -->  _id into user.faculty
+    user.faculty = newFaculty[0]._id;
 
     const newUser = await User.create([user], { session });
 
@@ -216,11 +214,8 @@ const createFaculty = async (
 
   if (newUserAllData) {
     newUserAllData = await User.findOne({ id: newUserAllData.id }).populate({
-      path: 'student',
+      path: 'faculty',
       populate: [
-        {
-          path: 'academicSemester',
-        },
         {
           path: 'academicDepartment',
         },

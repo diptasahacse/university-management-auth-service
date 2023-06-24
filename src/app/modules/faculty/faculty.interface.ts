@@ -1,3 +1,7 @@
+import { Model, Types } from 'mongoose';
+import { IAcademicDepartment } from '../academicDepartment/academicDepartment.interface';
+import { IAcademicFaculty } from '../academicFaculty/academicFaculty.interface';
+
 export type UserName = {
   firstName: string;
   lastName: string;
@@ -16,4 +20,8 @@ export type IFaculty = {
   presentAddress: string;
   permanentAddress: string;
   profileImage?: string; // // reference
+  designation: string;
+  academicDepartment: Types.ObjectId | IAcademicDepartment;
+  academicFaculty: Types.ObjectId | IAcademicFaculty;
 };
+export type FacultyModel = Model<IFaculty, Record<string, unknown>>;
