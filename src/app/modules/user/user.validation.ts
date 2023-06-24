@@ -103,8 +103,18 @@ const createStudentZodSchema = z.object({
     password: z.string().optional(),
   }),
 });
+
+// Faculty zod schema
+const createFacultyZodSchema = z.object({
+  body: z.object({
+    faculty: z.object({}),
+    password: z.string().optional(),
+  }),
+});
+
 export const UserValidation = {
   createStudentZodSchema,
+  createFacultyZodSchema,
 };
 
 // id: {
