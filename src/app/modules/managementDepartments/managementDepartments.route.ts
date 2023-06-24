@@ -14,15 +14,23 @@ router.post(
   ManagementDepartmentController.createManagementDepartment
 );
 
-// router.get('/:id', FacultyController.getSingleFaculty);
+router.get(
+  '/:id',
+  ManagementDepartmentController.getSingleManagementDepartment
+);
 
-// router.get('/', FacultyController.getAllFaculty);
-// router.delete('/:id', FacultyController.deleteFaculty);
+router.get('/', ManagementDepartmentController.getAllManagementDepartment);
+router.delete(
+  '/:id',
+  ManagementDepartmentController.deleteManagementDepartment
+);
 
-// router.patch(
-//   '/:id',
-//   validateRequest(FacultyValidation.updateFacultyZodSchema),
-//   FacultyController.updateFaculty
-// );
+router.patch(
+  '/:id',
+  validateRequest(
+    ManagementDepartmentsValidation.updateManagementDepartmentsZodSchema
+  ),
+  ManagementDepartmentController.updateSingleManagementDepartment
+);
 
 export const ManagementDepartmentRoutes = router;

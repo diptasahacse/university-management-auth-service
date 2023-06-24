@@ -8,6 +8,6 @@ export type ManagementDepartmentsModel = Model<
   Record<string, unknown>
 >;
 
-export type ManagementDepartmentsFilters = {
+export type IManagementDepartmentsFilters = {
   searchTerm?: string;
 };
