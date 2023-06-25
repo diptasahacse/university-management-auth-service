@@ -4,8 +4,6 @@ import { ManagementDepartmentsValidation } from './managementDepartments.validat
 import { ManagementDepartmentController } from './managementDepartments.controller';
 
 const router = Router();
-// Student
-// Create single semester
 router.post(
   '/create-management',
   validateRequest(

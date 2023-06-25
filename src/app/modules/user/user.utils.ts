@@ -1,19 +1,6 @@
 import { IAcademicSemester } from '../academicSemester/academicSemester.interface';
 import { User } from './user.model';
 
-// export const getLastUserId = async () => {
-//   const lastUser = await User.findOne({}, { id: 1, _id: 0 })
-//     .sort({ createdAt: -1 })
-//     .lean();
-//   return lastUser?.id;
-// };
-
-// export const generateUserId = async () => {
-//   const currentId = (await getLastUserId()) || (0).toString().padStart(8, '0'); //00000000
-//   const incrementedId = (parseInt(currentId) + 1).toString().padStart(8, '0');
-//   return incrementedId;
-// };
-
 // Student
 export const getLastStudentId = async (): Promise<string | undefined> => {
   const lastStudent = await User.findOne({ role: 'student' }, { id: 1, _id: 0 })
@@ -57,6 +44,26 @@ export const generateFacultyId = async (): Promise<string> => {
   let incrementedId = (parseInt(currentId) + 1).toString().padStart(8, '0');
   //2025
   incrementedId = `F-${incrementedId}`;
+
+  return incrementedId;
+  // console.log(incrementedId);
+};
+
+// Admin
+export const getLastAdminId = async (): Promise<string | undefined> => {
+  const lastAdmin = await User.findOne({ role: 'admin' }, { id: 1, _id: 0 })
+    .sort({ createdAt: -1 })
+    .lean();
+  // eslint-disable-next-line no-undefined
+  return lastAdmin?.id ? lastAdmin?.id.substring(2) : undefined;
+};
+//A-00000001
+export const generateAdminId = async (): Promise<string> => {
+  const currentId = (await getLastAdminId()) || (0).toString().padStart(8, '0'); //00000000
+
+  let incrementedId = (parseInt(currentId) + 1).toString().padStart(8, '0');
+  //2025
+  incrementedId = `A-${incrementedId}`;
 
   return incrementedId;
   // console.log(incrementedId);

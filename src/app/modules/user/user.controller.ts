@@ -31,20 +31,19 @@ const createFaculty = catchAsync(
     });
   }
 );
+const createAdmin = catchAsync(
+  async (req: Request, res: Response): Promise<void> => {
+    const { admin, ...user } = req.body;
 
-const getUser = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const result = await UserService.getUser();
-    res.status(200).json({
+    const result = await UserService.createAdmin(admin, user);
+
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
       success: true,
-      message: 'Successfully created user',
+      message: 'Successfully create admin',
       data: result,
     });
-  } catch (error) {
-    res.status(400).json({
-      success: false,
-      message: 'Failed to create user',
-    });
   }
-};
-export const UserController = { createStudent, createFaculty, getUser };
+);
+
+export const UserController = { createStudent, createFaculty, createAdmin };
