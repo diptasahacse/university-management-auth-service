@@ -5,7 +5,7 @@ import { IGenericErrorMessage } from '../../interfaces/error';
 import handleValidationError from '../../errors/handleValidationError';
 import config from '../../config';
 import ApiError from '../../errors/ApiError';
-import { errorLogger } from '../../shared/logger';
+// import { errorLogger } from '../../shared/logger';
 import { ZodError } from 'zod';
 import handleZodError from '../../errors/handleZodError';
 import handleCastError from '../../errors/handleCastError';
@@ -14,7 +14,7 @@ import handleCastError from '../../errors/handleCastError';
 const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
   config.env === 'development'
     ? console.log('⛔ Global Error Handler : ', error)
-    : errorLogger.error('⛔ Global Error Handler : ', error);
+    : console.log('⛔ Global Error Handler : ', error);
 
   let statusCode = 500; // internal server error
   let message = 'Something went wrong';
