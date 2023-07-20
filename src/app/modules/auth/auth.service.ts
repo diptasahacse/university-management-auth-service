@@ -1,8 +1,11 @@
 import httpStatus from 'http-status';
 import ApiError from '../../../errors/ApiError';
 import { User } from '../user/user.model';
-import { ILoginUser } from './auth.interface';
-const userLogin = async (payload: ILoginUser) => {
+import { ILoginUser, ILoginUserResponse } from './auth.interface';
+import { Secret } from 'jsonwebtoken';
+import config from '../../../config';
+import { JwtHelpers } from '../../../helper/jwtHelpers';
+const userLogin = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
   const { id, password } = payload;
   //   console.log(payload);
   const user = new User();
@@ -19,6 +22,38 @@ const userLogin = async (payload: ILoginUser) => {
   ) {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Incorrect password');
   }
+
+  // JWT
+  const {
+    id: userId,
+    role,
+    needPasswordChange: isNeedPasswordChange,
+  } = isUserExist;
+  // Create access token
+  const accessToken = JwtHelpers.createToken(
+    {
+      userId,
+      role,
+    },
+    config.jwt.access_secret as Secret,
+    config.jwt.access_secret_expire_in as string
+  );
+
+  // Create refresh token
+  const refreshToken = JwtHelpers.createToken(
+    {
+      userId,
+      role,
+    },
+    config.jwt.refresh_secret as Secret,
+    config.jwt.refresh_secret_expire_in as string
+  );
+
+  return {
+    accessToken,
+    refreshToken,
+    needPasswordChange: isNeedPasswordChange as boolean,
+  };
 };
 export const AuthService = {
   userLogin,
