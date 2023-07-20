@@ -12,9 +12,8 @@
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
-
   "rules": {
-    "no-console": "warn",
+    "no-console": "off",
     "no-undefined": "error",
     "no-undef": "error",
     "no-unused-expressions": "error",
