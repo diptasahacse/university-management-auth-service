@@ -7,9 +7,14 @@ import { StudentRoutes } from '../modules/student/student.route';
 import { FacultyRoutes } from '../modules/faculty/faculty.route';
 import { ManagementDepartmentRoutes } from '../modules/managementDepartments/managementDepartments.route';
 import { AdminRoutes } from '../modules/admin/admin.route';
+import { AuthRoutes } from '../modules/auth/auth.route';
 
 const router = Router();
 const moduleRoutes = [
+  {
+    path: '/auth',
+    routes: AuthRoutes,
+  },
   {
     path: '/users',
     routes: UserRoutes,

@@ -8,7 +8,7 @@ import { Student } from './student.model';
 import httpStatus from 'http-status';
 import ApiError from '../../../errors/ApiError';
 import { User } from '../user/user.model';
-
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 const getAllStudent = async (
   filters: IStudentFilters,
   paginationOptions: IPaginationOptions
