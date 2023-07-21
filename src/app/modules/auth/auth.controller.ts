@@ -5,6 +5,7 @@ import sendResponse from '../../../shared/sendResponse';
 import httpStatus from 'http-status';
 import { AuthService } from './auth.service';
 import config from '../../../config';
+import { IRefreshTokenResponse } from './auth.interface';
 
 const userLogin = catchAsync(
   async (req: Request, res: Response): Promise<void> => {
@@ -27,7 +28,29 @@ const userLogin = catchAsync(
     });
   }
 );
+const refreshToken = catchAsync(
+  async (req: Request, res: Response): Promise<void> => {
+    const { refreshToken } = req.cookies;
+
+    const result = await AuthService.refreshToken(refreshToken);
+
+    // Set refresh token into cookie
+    const cookieOptions = {
+      secure: config.env === 'production',
+      httpOnly: true,
+    };
+    res.cookie('refreshToken', refreshToken, cookieOptions);
+
+    sendResponse<IRefreshTokenResponse>(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Access token created successfully',
+      data: result,
+    });
+  }
+);
 
 export const AuthController = {
   userLogin,
+  refreshToken,
 };

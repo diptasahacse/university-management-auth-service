@@ -6,7 +6,7 @@ import httpStatus from 'http-status';
 const createStudent = catchAsync(
   async (req: Request, res: Response): Promise<void> => {
     const { student, ...user } = req.body;
-    // console.log(req.cookies, 'cookie');
+    // console.log(req.cookies);
     const result = await UserService.createStudent(student, user);
 
     sendResponse(res, {
