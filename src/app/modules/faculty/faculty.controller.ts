@@ -10,7 +10,6 @@ import { FacultyService } from './faculty.service';
 
 const getAllFaculty = catchAsync(async (req: Request, res: Response) => {
   const filters: IFacultyFilters = pick(req.query, facultyFilterableFields);
-
   const paginationOptions = pick(req.query, paginationFields);
   const result = await FacultyService.getAllFaculty(filters, paginationOptions);
   sendResponse<IFaculty[]>(res, {
