@@ -1,7 +1,6 @@
 import httpStatus from 'http-status';
 import ApiError from '../../../errors/ApiError';
 import { User } from '../user/user.model';
-import bcrypt from 'bcrypt';
 import {
   ILoginUser,
   ILoginUserResponse,
@@ -99,7 +98,9 @@ const changePassword = async (
 ): Promise<IUser | null> => {
   // check if user exist
   const user = new User();
-  const isUserExist = await user.isUserExist(userData.userId);
+  const isUserExist = await User.findOne({ id: userData.userId }).select(
+    '+password'
+  );
   if (!isUserExist) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
   }
@@ -111,24 +112,12 @@ const changePassword = async (
   if (!isPasswordMatched) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Incorrect old password');
   }
-  // Keep hashed password
-  passwordData.newPassword = await bcrypt.hash(
-    passwordData.newPassword,
-    Number(config.bcrypt_salt_rounds)
-  );
 
-  // Update in database
-  const result = await User.findOneAndUpdate(
-    {
-      id: isUserExist.id,
-    },
-    {
-      password: passwordData.newPassword,
-      needPasswordChange: false,
-      passwordChangedAt: new Date(),
-    }
-  );
-
+  // modify
+  isUserExist.needPasswordChange = false;
+  isUserExist.password = passwordData.newPassword; // keep new password. it will hashed in pre hook
+  // updating using save
+  const result = isUserExist.save();
   return result;
 };
 export const AuthService = {
