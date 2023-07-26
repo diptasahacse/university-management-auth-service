@@ -67,13 +67,16 @@ userSchema.methods.isPasswordMatched = async function (
 
 // Pre Hook for Hash Password
 userSchema.pre('save', async function (next) {
-  //hash user password
-
   const user = this;
+  //hash user password
   user.password = await bcrypt.hash(
     user.password,
     Number(config.bcrypt_salt_rounds)
   );
+
+  if (!user.needPasswordChange) {
+    user.passwordChangedAt = new Date();
+  }
   next();
 });
 
