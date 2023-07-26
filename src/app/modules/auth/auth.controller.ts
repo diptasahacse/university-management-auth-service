@@ -6,6 +6,7 @@ import httpStatus from 'http-status';
 import { AuthService } from './auth.service';
 import config from '../../../config';
 import { IRefreshTokenResponse } from './auth.interface';
+import ApiError from '../../../errors/ApiError';
 
 const userLogin = catchAsync(
   async (req: Request, res: Response): Promise<void> => {
@@ -49,8 +50,25 @@ const refreshToken = catchAsync(
     });
   }
 );
+const changePassword = catchAsync(
+  async (req: Request, res: Response): Promise<void> => {
+    const passwordData = req.body;
+    const userData = req.user;
+
+    const result = await AuthService.changePassword(passwordData, userData);
+    if (!result) {
+      throw new ApiError(httpStatus.CONFLICT, 'Something went wrong');
+    }
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Password changed successfully',
+    });
+  }
+);
 
 export const AuthController = {
   userLogin,
   refreshToken,
+  changePassword,
 };
