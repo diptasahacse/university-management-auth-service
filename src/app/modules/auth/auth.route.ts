@@ -2,6 +2,8 @@ import { Router } from 'express';
 import validateRequest from '../../middlewares/validateRequest';
 import { AuthValidation } from './auth.validation';
 import { AuthController } from './auth.controller';
+import auth from '../../middlewares/auth';
+import { ENUM_USER_ROLE } from '../../../enums/user';
 
 const router = Router();
 
@@ -17,8 +19,18 @@ router.post(
   AuthController.refreshToken
 );
 
-// // Change Password
-// router.post('/change-password');
+// Change Password
+router.post(
+  '/change-password',
+  validateRequest(AuthValidation.changePasswordZodSchema),
+  auth(
+    ENUM_USER_ROLE.SUPER_ADMIN,
+    ENUM_USER_ROLE.ADMIN,
+    ENUM_USER_ROLE.FACULTY,
+    ENUM_USER_ROLE.STUDENT
+  ),
+  AuthController.changePassword
+);
 
 // // Change Password
 // router.post('/refresh-token');
